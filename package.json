@@ -1,0 +1,24 @@
+{
+  "name": "cypress-e2e-framework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phulo2409/cypress-e2e-framework.git"
+  },
+  "author": "Phu Lo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phulo2409/cypress-e2e-framework/issues"
+  },
+  "homepage": "https://github.com/phulo2409/cypress-e2e-framework#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "cypress": "^14.4.1",
+    "typescript": "^5.8.3"
+  }
+}
