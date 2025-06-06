@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "runner": "cypress open --e2e --browser chrome"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,8 @@
   "homepage": "https://github.com/phulo2409/cypress-e2e-framework#readme",
   "description": "",
   "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "@testing-library/cypress": "^10.0.3",
     "@types/node": "^22.15.29",
     "cypress": "^14.4.1",
     "typescript": "^5.8.3"

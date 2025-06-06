@@ -1,4 +1,4 @@
-class RegisterPage{
+class testrg{
     private firstNameTextbox: string = '#input-firstname';
     private lastNameTextbox: string = '#input-lastname';
     private emailTextbox: string = '#input-email';
@@ -41,5 +41,3 @@ class RegisterPage{
         cy.get(this.continueButton).click();
     }    
 }
-
-export const registerPage = new RegisterPage();
