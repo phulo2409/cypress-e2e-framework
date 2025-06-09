@@ -1,3 +1,4 @@
+import User from "../datatest/User";
 import { BasePage } from "./BasePage";
 
 class HomePage extends BasePage{
@@ -5,12 +6,12 @@ class HomePage extends BasePage{
         return "div[id='slider-carousel']";
     }
 
-    private get signupLoginButton(){
-        return "a[href='/login']";
-    }
-
     private get logoutButton(){
         return "a[href='/logout']";
+    }
+
+    private get contactUSButton(){
+        return "a[href='/contact_us']";
     }
 
     private get username(){
@@ -21,7 +22,21 @@ class HomePage extends BasePage{
         return "a[href='/delete_account']";
     }
 
-    
+    private get testCasesButton(){
+        return "header a[href='/test_cases']";
+    }
+
+    private get productButton(){
+        return "a[href='/products']";
+    }
+
+    private get productRecommendList(){
+        return ".item.active .productinfo a";
+    }
+
+    private get recommandTitle(){
+        return ".recommended_items h2";
+    }
 
     getSlider(){
         return cy.get(this.slider);
@@ -31,8 +46,8 @@ class HomePage extends BasePage{
         return cy.get(this.username);
     }
 
-    openSignupLoginPage(): void{
-        cy.get(this.signupLoginButton).click();
+    openContactUsPage(){
+        cy.get(this.contactUSButton).click();
     }
 
     deleteAccount(): void{
@@ -45,6 +60,22 @@ class HomePage extends BasePage{
 
     logout(){
         cy.get(this.logoutButton).click();
+    }
+
+    openTestCasesPage(): void{
+        cy.get(this.testCasesButton).click();
+    }
+
+    openProductPage(){
+        cy.get(this.productButton).click();
+    }
+
+    getProductRecommendList(){
+        return cy.get(this.productRecommendList);
+    }
+
+    getRecommendTitle(){
+        return cy.get(this.recommandTitle).first();
     }
 }
 

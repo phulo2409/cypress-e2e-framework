@@ -1,7 +1,8 @@
 import UserAPI from "../api/UserAPI";
 import User from "../datatest/User";
+import { BasePage } from "./BasePage";
 
-class LoginPage{
+class LoginPage extends BasePage{
     private get signupTitle(){
         return "div.signup-form>h2";
     }
@@ -58,6 +59,10 @@ class LoginPage{
 
     registerAccountAPI(user: User){
         return new UserAPI().registerAPI(user);
+    }
+
+    loginAPI(user: User){
+        return new UserAPI().loginAPI(user);
     }
 
     getUserInfoAPI(user: User){

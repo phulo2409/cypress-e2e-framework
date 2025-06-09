@@ -37,5 +37,29 @@ export default class UserAPI{
             },
         });
     }
+
+    // loginAPI(user: User){
+    //     cy.request({
+    //         method: 'POST',
+    //         url: '/api/verifyLogin',
+    //         form: true,
+    //         body: {
+    //             email: user.getEmail(),
+    //             password: user.getPassword(),
+    //         },
+    //     });
+    // }
+
+    loginAPI(user: User){
+        cy.request({
+            method: 'POST',
+            url: '/login',
+            form: true,
+            body: {
+                email: user.getEmail(),
+                password: user.getPassword(),
+            },
+        });
+    }
 }
 
