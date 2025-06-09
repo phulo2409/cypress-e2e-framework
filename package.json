@@ -21,6 +21,7 @@
     "@faker-js/faker": "^9.8.0",
     "@testing-library/cypress": "^10.0.3",
     "@types/node": "^22.15.29",
+    "cy-verify-downloads": "^0.2.6",
     "cypress": "^14.4.1",
     "cypress-file-upload": "^5.0.8",
     "cypress-real-events": "^1.14.0",

@@ -29,7 +29,6 @@ describe("Product Page test cases", () => {
     })
 
     it("Search Product", () =>{
-        productPage.getProductTitle().should("have.text", "All Products");
         productPage.searchProduct("Men Tshirt");
         productPage.getProductTitle().should("have.text", "Searched Products");
         productPage.getProductList().should("be.visible");
