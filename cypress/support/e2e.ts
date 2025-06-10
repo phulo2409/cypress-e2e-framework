@@ -17,4 +17,5 @@
 import './commands'
 import "cypress-real-events";
 import 'cypress-mochawesome-reporter/register';
+import '@shelex/cypress-allure-plugin';
 require('cy-verify-downloads').addCustomCommand();

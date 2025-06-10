@@ -3,7 +3,7 @@
       "target": "es5",
       "lib": ["es5", "dom"],
       "sourceMap": true,
-      "types": ["cypress", "node", "@testing-library/cypress", "cypress-file-upload", "cypress-real-events", "cy-verify-downloads"],
+      "types": ["cypress", "node", "@testing-library/cypress", "cypress-file-upload", "cypress-real-events", "cy-verify-downloads","@shelex/cypress-allure-plugin"],
       "resolveJsonModule": true,
       "esModuleInterop": true,
       "moduleResolution": "node"

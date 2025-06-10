@@ -1,5 +1,6 @@
 import { defineConfig } from "cypress";
 const { verifyDownloadTasks } = require('cy-verify-downloads');
+import allureWriter from "@shelex/cypress-allure-plugin/writer";
 
 export default defineConfig({
   e2e: {
@@ -8,10 +9,15 @@ export default defineConfig({
       // implement node event listeners here
       on('task', verifyDownloadTasks);
       require('cypress-mochawesome-reporter/plugin')(on);
+      allureWriter(on, config);
+      return config;
     },
   },
   env:{
     URL: "https://automationexercise.com/",
+    allure: true,
+    allureAttrachRequests: true,
+    allureAddVideoOnPass: true,
   },
   pageLoadTimeout: 60000,
   defaultCommandTimeout: 15000,
