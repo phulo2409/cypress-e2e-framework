@@ -37,10 +37,10 @@ describe("Product Page test cases", () => {
 
     it("Add Products in Cart", () =>{
         productPage.getProductList().first().realHover();
-        productPage.getAddToCartOverlayList().first().click();
+        productPage.getAddToCartOverlayList().first().click({waitForAnimations: false});
         productPage.clickOnContinueShopping();
         productPage.getProductList().eq(1).realHover();
-        productPage.getAddToCartOverlayList().eq(1).click();
+        productPage.getAddToCartOverlayList().eq(1).click({waitForAnimations: false});
         productPage.clickOnViewCart();
         viewCartPage.getTableRowName("Blue Top").within(() => {
             viewCartPage.getCartPrice().should("have.text", "Rs. 500");
