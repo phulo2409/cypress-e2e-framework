@@ -4,6 +4,7 @@ import { loginPage } from "../../pages/LoginPage";
 import { productDetailPage } from "../../pages/ProductDetailPage";
 import { productPage } from "../../pages/ProductsPage";
 import { viewCartPage } from "../../pages/ViewCartPage";
+import productData from "../../fixtures/productData.json";
 
 const user = new User();
 
@@ -29,7 +30,7 @@ describe("Product Page test cases", () => {
     })
 
     it("Search Product", () =>{
-        productPage.searchProduct("Men Tshirt");
+        productPage.searchProduct(productData.menTshirtProduct);
         productPage.getProductTitle().should("have.text", "Searched Products");
         productPage.getProductList().should("be.visible");
     });
@@ -46,7 +47,7 @@ describe("Product Page test cases", () => {
             viewCartPage.getCartQuantity().should("have.text", "1");
             viewCartPage.getCartTotalPrice().should("have.text", "Rs. 500");
         });
-        viewCartPage.getTableRowName("Men Tshirt").within(() => {
+        viewCartPage.getTableRowName(productData.menTshirtProduct).within(() => {
             viewCartPage.getCartPrice().should("have.text", "Rs. 400");
             viewCartPage.getCartQuantity().should("have.text", "1");
             viewCartPage.getCartTotalPrice().should("have.text", "Rs. 400");
@@ -55,25 +56,25 @@ describe("Product Page test cases", () => {
 
     it("View & Cart Brand Products", () =>{
         productPage.getBrandTitle().should("be.visible");
-        productPage.openBrandName("Madame");
-        productPage.getProductTitle().should("have.text", "Brand - Madame Products");
-        productPage.openBrandName("Polo");
-        productPage.getProductTitle().should("have.text", "Brand - Polo Products");
+        productPage.openBrandName(productData.madameBrand);
+        productPage.getProductTitle().should("have.text", `Brand - ${productData.madameBrand} Products`);
+        productPage.openBrandName(productData.poloBrand);
+        productPage.getProductTitle().should("have.text", `Brand - ${productData.poloBrand} Products`);
     });
 
     it("Search Products and Verify Cart After Login", () =>{
         productPage.getProductTitle().should("have.text", "All Products");
-        productPage.searchProduct("Men Tshirt");
+        productPage.searchProduct(productData.menTshirtProduct);
         productPage.getProductTitle().should("have.text", "Searched Products");
         productPage.getProductList().should("be.visible");
-        productPage.addProduct("Men Tshirt");
+        productPage.addProduct(productData.menTshirtProduct);
         productPage.openCartPage();
-        viewCartPage.getCartDescription().should("contain", "Men Tshirt");
+        viewCartPage.getCartDescription().should("contain", productData.menTshirtProduct);
         viewCartPage.openSignupLoginPage();
         loginPage.registerAccountAPI(user);
         loginPage.login(user);
         homePage.openCartPage();
-        viewCartPage.getCartDescription().should("contain", "Men Tshirt");
+        viewCartPage.getCartDescription().should("contain", productData.menTshirtProduct);
     });
 
     it("Add review on product", () =>{
@@ -102,17 +103,17 @@ describe("Home Page test cases", () => {
      });
 
     it("Remove Products From Cart", () =>{
-        homePage.addProduct("Men Tshirt");
+        homePage.addProduct(productData.menTshirtProduct);
         homePage.openCartPage();
         viewCartPage.deleteProduct();
         viewCartPage.getCartDescription().should("not.exist");
     });
 
     it("View Category Products", () =>{
-        homePage.openCategory("Women", "Dress")
-        productPage.getProductTitle().should("have.text", "Women - Dress Products");
-        productPage.openCategory("Men", "Tshirts")
-        productPage.getProductTitle().should("have.text", "Men - Tshirts Products");
+        homePage.openCategory(productData.womenCategory, "Dress")
+        productPage.getProductTitle().should("have.text", `${productData.womenCategory} - Dress Products`);
+        productPage.openCategory(productData.menCategory, "Tshirts")
+        productPage.getProductTitle().should("have.text", `${productData.menCategory} - Tshirts Products`);
     });
 
     it("Add to cart from Recommended items", () =>{

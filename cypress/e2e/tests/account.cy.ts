@@ -2,6 +2,7 @@ import User from "../../datatest/User";
 import { homePage } from "../../pages/HomePage";
 import { loginPage } from "../../pages/LoginPage";
 import { signUpPage } from "../../pages/SignUpPage";
+import messageValidation from "../../fixtures/messageValidation.json";
 
 const user = new User();
 
@@ -18,11 +19,11 @@ describe('Account Testcases', () => {
         loginPage.registerAccount(user);
         signUpPage.getTitleSignUp().should("have.text", "Enter Account Information");
         signUpPage.fillAccountInformation(user);
-        signUpPage.getSuccessMessage().should("have.text", "Account Created!");
+        signUpPage.getSuccessMessage().should("have.text", messageValidation.accountCreated);
         signUpPage.clickOnContinue();
         homePage.getUsername().should("have.text", user.getName());
         homePage.deleteAccount();
-        homePage.getAccountDeteleMessage().should("have.text", "Account Deleted!");
+        homePage.getAccountDeteleMessage().should("have.text", messageValidation.accountDeleted);
         homePage.clickOnContinue();
     });
 
@@ -31,12 +32,12 @@ describe('Account Testcases', () => {
         loginPage.login(user);
         homePage.getUsername().should("have.text", user.getName());
         homePage.deleteAccount();
-        homePage.getAccountDeteleMessage().should("have.text", "Account Deleted!");
+        homePage.getAccountDeteleMessage().should("have.text", messageValidation.accountDeleted);
     })
 
     it('Login User with incorrect email and password', () => {
         loginPage.login("wrongEmail@gmail.com", "wrongPassword");
-        loginPage.getLoginValidationMessage().should("have.text", "Your email or password is incorrect!")
+        loginPage.getLoginValidationMessage().should("have.text", messageValidation.loginInvalid)
     })
 
     it('Logout User', () => {
@@ -50,6 +51,6 @@ describe('Account Testcases', () => {
     it('Register User with existing email', () => {
         loginPage.registerAccountAPI(user);
         loginPage.registerAccount(user);
-        loginPage.getSignUpValidationMessage().should("have.text", "Email Address already exist!");
+        loginPage.getSignUpValidationMessage().should("have.text", messageValidation.emailExist);
     })
 });

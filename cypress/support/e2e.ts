@@ -16,4 +16,5 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import "cypress-real-events";
+import 'cypress-mochawesome-reporter/register';
 require('cy-verify-downloads').addCustomCommand();

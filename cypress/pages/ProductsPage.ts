@@ -5,10 +5,6 @@ class ProductsPage extends BasePage{
         return "div.container h2.title";
     }
 
-    
-
-    
-
     private get searchProductTextbox(){
         return "input#search_product";
     }
@@ -16,13 +12,6 @@ class ProductsPage extends BasePage{
     private get searchButton(){
         return "button#submit_search";
     }
-
-    
-
-   
-
-
-    
 
     getProductTitle(){
         return cy.get(this.productTitle);
@@ -32,12 +21,6 @@ class ProductsPage extends BasePage{
         cy.get(this.searchProductTextbox).type(productName);
         cy.get(this.searchButton).click();
     }
-
-    
-
-    
-
-    
 }
 
 export const productPage = new ProductsPage();

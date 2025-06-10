@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "runner": "cypress open --e2e --browser chrome"
+    "runner": "cypress open --e2e --browser chrome",
+    "cypress-run": "cypress run --browser chrome"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "cy-verify-downloads": "^0.2.6",
     "cypress": "^14.4.1",
     "cypress-file-upload": "^5.0.8",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-real-events": "^1.14.0",
     "typescript": "^5.8.3"
   }

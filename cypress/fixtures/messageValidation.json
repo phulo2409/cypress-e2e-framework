@@ -1,0 +1,9 @@
+{
+    "accountCreated": "Account Created!",
+    "accountDeleted": "Account Deleted!",
+    "loginInvalid": "Your email or password is incorrect!",
+    "emailExist": "Email Address already exist!",
+    "submitContact": "Success! Your details have been submitted successfully.",
+    "subcribeSuccess": "You have been successfully subscribed!",
+    "paymentSuccess": "Congratulations! Your order has been confirmed!"
+}

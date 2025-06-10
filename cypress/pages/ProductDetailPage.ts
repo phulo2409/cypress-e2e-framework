@@ -42,7 +42,6 @@ class ProductDetailPage extends BasePage{
         return "#review-section span";
     }
 
-
     getCategory(){
         return cy.get(this.productState).contains("Category:");
     }
