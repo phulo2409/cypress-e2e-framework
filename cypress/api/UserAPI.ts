@@ -53,7 +53,7 @@ export default class UserAPI{
     loginAPI(user: User){
         cy.request({
             method: 'POST',
-            url: '/login',
+            url: '/api/verifyLogin',
             form: true,
             body: {
                 email: user.getEmail(),

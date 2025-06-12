@@ -1,6 +1,7 @@
 import { defineConfig } from "cypress";
 const { verifyDownloadTasks } = require('cy-verify-downloads');
 import allureWriter from "@shelex/cypress-allure-plugin/writer";
+const testResults: Record<string, boolean> = {};
 
 export default defineConfig({
   e2e: {
@@ -8,6 +9,15 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
       on('task', verifyDownloadTasks);
+      on('task', {
+        setTestResult({ testName, passed }: { testName: string; passed: boolean }) {
+          testResults[testName] = passed
+          return null
+        },
+        getTestResult(testName: string) {
+          return testResults[testName] || false
+        }
+      })
       require('cypress-mochawesome-reporter/plugin')(on);
       allureWriter(on, config);
       return config;
