@@ -2,17 +2,14 @@ import User from "../datatest/User";
 
 export default class UserAPI{
     getUserAPI(user: User) {
-        cy.request({
+        return cy.request({
             method: 'GET',
-            url: '/api/getUserDetailByEmail',
-            body: {
-                email: user.getEmail(),
-            },
+        url: `/api/getUserDetailByEmail?email=${user.getEmail()}`,
         });
     }
 
     registerAPI(user: User){
-        cy.request({
+        return cy.request({
             method: 'POST',
             url: '/api/createAccount',
             form: true,
@@ -38,22 +35,22 @@ export default class UserAPI{
         });
     }
 
-    // loginAPI(user: User){
-    //     cy.request({
-    //         method: 'POST',
-    //         url: '/api/verifyLogin',
-    //         form: true,
-    //         body: {
-    //             email: user.getEmail(),
-    //             password: user.getPassword(),
-    //         },
-    //     });
-    // }
-
-    loginAPI(user: User){
-        cy.request({
+    verifyLoginAPI(user: User){
+        return cy.request({
             method: 'POST',
             url: '/api/verifyLogin',
+            form: true,
+            body: {
+                email: user.getEmail(),
+                password: user.getPassword(),
+            },
+        });
+    }
+
+    deleteUserAccountAPI(user: User){
+        return cy.request({
+            method: 'DELETE',
+            url: '/api/deleteAccount',
             form: true,
             body: {
                 email: user.getEmail(),

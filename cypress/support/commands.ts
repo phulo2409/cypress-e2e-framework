@@ -1,5 +1,7 @@
 import '@testing-library/cypress/add-commands'
 import 'cypress-file-upload';
+import User from '../datatest/User';
+import UserAPI from '../api/UserAPI';
 /// <reference types="cypress" />
 // ***********************************************
 // This example commands.ts shows you how to
@@ -32,6 +34,10 @@ declare global {
     interface Chainable {
         login(email: string, password: string): Chainable<void>;
         requirePreviousTestPass(testName: string): Chainable<void>;
+        registerAccountAPI(user: User): Chainable<any>;
+        verifyLoginAPI(user: User): Chainable<any>;
+        getUserInfoAPI(user: User): Chainable<any>;
+        deleteUserAccountAPI(user: User): Chainable<any>;
     }
   }
 }
@@ -42,4 +48,21 @@ Cypress.Commands.add('login', (email: string, password: string) => {
     cy.get('#input-password').type(password);
     cy.get('input.btn.btn-primary').click();
 })
+
+Cypress.Commands.add('registerAccountAPI', (user: User) => {
+  return new UserAPI().registerAPI(user);
+});
+
+Cypress.Commands.add('verifyLoginAPI', (user: User) => {
+  return new UserAPI().verifyLoginAPI(user);
+});
+
+Cypress.Commands.add('getUserInfoAPI', (user: User) => {
+  return new UserAPI().getUserAPI(user);
+});
+
+Cypress.Commands.add('deleteUserAccountAPI', (user: User) => {
+  return new UserAPI().deleteUserAccountAPI(user);
+});
+
 

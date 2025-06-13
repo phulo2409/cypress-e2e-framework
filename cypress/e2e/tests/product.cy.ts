@@ -71,7 +71,7 @@ describe("Product Page test cases", () => {
         productPage.openCartPage();
         viewCartPage.getCartDescription().should("contain", productData.menTshirtProduct);
         viewCartPage.openSignupLoginPage();
-        loginPage.registerAccountAPI(user);
+        cy.registerAccountAPI(user);
         loginPage.login(user);
         homePage.openCartPage();
         viewCartPage.getCartDescription().should("contain", productData.menTshirtProduct);

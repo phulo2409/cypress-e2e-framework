@@ -27,8 +27,8 @@ describe('Account Testcases', () => {
         homePage.clickOnContinue();
     });
 
-    it.skip('Login User with correct email and password', () => {
-        loginPage.registerAccountAPI(user);
+    it('Login User with correct email and password', () => {
+        cy.registerAccountAPI(user);
         loginPage.login(user);
         homePage.getUsername().should("have.text", user.getName());
         homePage.deleteAccount();
@@ -41,7 +41,7 @@ describe('Account Testcases', () => {
     })
 
     it('Logout User', () => {
-        loginPage.registerAccountAPI(user);
+        cy.registerAccountAPI(user);
         loginPage.login(user);
         homePage.getUsername().should("have.text", user.getName());
         homePage.logout();
@@ -49,34 +49,8 @@ describe('Account Testcases', () => {
     })
 
     it('Register User with existing email', () => {
-        loginPage.registerAccountAPI(user);
+        cy.registerAccountAPI(user);
         loginPage.registerAccount(user);
         loginPage.getSignUpValidationMessage().should("have.text", messageValidation.emailExist);
     })
-
-    
 });
-
-describe('API Test Dependency', () =>{
-    beforeEach(function() {
-        homePage.load();
-        homePage.getSlider().should("be.visible");
-        homePage.openSignupLoginPage();
-        loginPage.getLoginTitle().should("be.visible");
-        // if (Cypress.env('skipRemainingTests')) {
-        //     this.skip(); 
-        // }
-    });
-
-    it('API Test - Register', () => {
-        loginPage.registerAccountAPI(user);
-        Cypress.env('skipRemainingTests', false);
-    });
-
-    it('API Test - Login', function () {
-        if (Cypress.env('skipRemainingTests')) {
-            this.skip();
-        }
-        loginPage.loginAPI(user);
-    });
-})

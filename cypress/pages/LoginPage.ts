@@ -56,19 +56,6 @@ class LoginPage extends BasePage{
         cy.get(this.emailSignupTextbox).type(user.getEmail());
         cy.get(this.signupButton).click();
     }
-
-    registerAccountAPI(user: User){
-        return new UserAPI().registerAPI(user);
-    }
-
-    loginAPI(user: User){
-        return new UserAPI().loginAPI(user);
-    }
-
-    getUserInfoAPI(user: User){
-        return new UserAPI().getUserAPI(user);
-    }
-
     // login(user: User || email: string, password: string){
     //     cy.get(this.emailLoginTextbox).type(user.getEmail());
     //     cy.get(this.passwordLoginTextbox).type(user.getpassword());

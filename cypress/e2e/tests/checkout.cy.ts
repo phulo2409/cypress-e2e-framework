@@ -21,7 +21,7 @@ describe("Check out test cases", () => {
         viewCartPage.getCartDescription().should("be.visible");
         viewCartPage.clickOnCheckOut();
         viewCartPage.clickOnLoginLinkCart();
-        loginPage.registerAccountAPI(user);
+        cy.registerAccountAPI(user);
         loginPage.login(user);
         homePage.openCartPage();
         viewCartPage.clickOnCheckOut();
@@ -37,7 +37,7 @@ describe("Check out test cases", () => {
 
     it("Place Order: Register before Checkout", () => {
         homePage.openSignupLoginPage();
-        loginPage.registerAccountAPI(user);
+        cy.registerAccountAPI(user);
         loginPage.login(user);
         homePage.addProduct(productData.menTshirtProduct);
         homePage.openCartPage();
@@ -59,7 +59,7 @@ describe("Check out test cases", () => {
         viewCartPage.getCartDescription().should("be.visible");
         viewCartPage.clickOnCheckOut();
         viewCartPage.clickOnLoginLinkCart();
-        loginPage.registerAccountAPI(user);
+        cy.registerAccountAPI(user);
         loginPage.login(user);
         homePage.openCartPage();
         viewCartPage.clickOnCheckOut();
