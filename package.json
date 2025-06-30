@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "runner": "cypress open --e2e --browser chrome",
-    "cypress-run": "cypress run --browser chrome"
+    "cypress-run": "cypress run --browser chrome",
+    "cypress-dashboard-parallel": "cypress run --record --key cafda7e4-f9d1-4fa8-8aff-240e72af3dd7 --parallel --browser chrome"
   },
   "repository": {
     "type": "git",

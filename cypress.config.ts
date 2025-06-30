@@ -41,4 +41,5 @@ export default defineConfig({
     inlineAssets: true,
     saveAllAttempts: false,
   },
+  projectId: "g4y5g3",
 });
