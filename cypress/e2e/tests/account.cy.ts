@@ -27,7 +27,7 @@ describe('Account Testcases', () => {
         homePage.clickOnContinue();
     });
 
-    it('Login User with correct email and password', () => {
+    it('Login User with correct email and password.', () => {
         cy.registerAccountAPI(user);
         loginPage.login(user);
         homePage.getUsername().should("have.text", user.getName());

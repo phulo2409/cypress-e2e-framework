@@ -4,7 +4,7 @@ export default class UserAPI{
     getUserAPI(user: User) {
         return cy.request({
             method: 'GET',
-        url: `/api/getUserDetailByEmail?email=${user.getEmail()}`,
+            url: `/api/getUserDetailByEmail?email=${user.getEmail()}`,
         });
     }
 
